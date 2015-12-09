@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
+
                 if(!id.getText().toString().equals("20140302")){
                     Toast.makeText(getApplicationContext(), "ID가 잘못되었습니다.", Toast.LENGTH_SHORT).show();
                 }else if(!pw.getText().toString().equals("a")){
