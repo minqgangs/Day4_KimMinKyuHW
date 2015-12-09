@@ -14,7 +14,7 @@ public class MenuActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_ANOTHER2 = 1002;
     public static final int REQUEST_CODE_ANOTHER3 = 1003;
 
-    Button button2, button3, button4;
+    Button button2, button3, button4, button6;
     String menu2, menu3, menu4;
 
     String rtMenu="";
@@ -27,6 +27,9 @@ public class MenuActivity extends AppCompatActivity {
         button2 = (Button) findViewById(R.id.button2);
         button3 = (Button) findViewById(R.id.button3);
         button4 = (Button) findViewById(R.id.button4);
+        //로그인화면으로 돌아가는 버튼
+        button6 = (Button) findViewById(R.id.button6);
+
 
         menu2 = button2.getText().toString();
         menu3 = button3.getText().toString();
@@ -62,7 +65,19 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
         //receiveIntent();
+        //로그인화면으로 돌아가는 버튼클릭
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), MenuActivity.class);
 
+                intent.putExtra("menuName", "메뉴");
+                //startActivity(intent);
+                setResult(RESULT_OK, intent);
+
+                finish();
+            }
+        });
 
     }
 

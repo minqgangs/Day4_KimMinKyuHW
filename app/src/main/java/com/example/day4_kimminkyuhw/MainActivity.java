@@ -11,9 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static final int REQUEST_CODE_ANOTHER = 1000;
     Button button1;
     EditText id, pw;
+    String rtMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +41,21 @@ public class MainActivity extends AppCompatActivity {
 
                     intent.putExtra("menuName", "Login");
 
-                    startActivity(intent);
+                    //startActivity(intent);
+                    startActivityForResult(intent, REQUEST_CODE_ANOTHER);
                 }
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == RESULT_OK){
+            rtMenu = data.getStringExtra("menuName");
+            Toast.makeText(getApplicationContext(),rtMenu + "에서 돌아왔습니다.",Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
